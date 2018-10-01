@@ -48,6 +48,11 @@ def grad_ascent(data_mat_in, class_labels):
 
 
 def plot_best_fit(weights):
+    """
+     plot the data_set and logRegress line
+    :param weights:
+    :return:
+    """
     import matplotlib.pyplot as plt
     data_mat, label_mat = load_data_set()
     data_arr = array(data_mat)
@@ -68,18 +73,17 @@ def plot_best_fit(weights):
     ax.scatter(xcord1, ycord1, s=30, c='red', marker='s')
     ax.scatter(xcord2, ycord2, s=30, c='green')
     x = arange(-3.0, 3.0, 0.1)
-    y = (-weights[0] - weights[1] * x) / weights[2]
-    print(x)
-    print(y)
-
-    ax.plot(x, y.transpose())
-    plt.xlabel('X1');
-    plt.ylabel('X2');
+    if weights is not None:
+        y = (-weights[0] - weights[1] * x) / weights[2]
+        ax.plot(x, y.transpose())
+    plt.xlabel('X1')
+    plt.ylabel('X2')
     plt.show()
 
 
 def stoc_grad_ascent0(data_matrix, class_labels):
     m, n = shape(data_matrix)
+    data_matrix = array(data_matrix)
     alpha = 0.01
     weights = ones(n)  # initialize to all ones
     for i in range(m):
@@ -91,6 +95,7 @@ def stoc_grad_ascent0(data_matrix, class_labels):
 
 def stoc_grad_ascent1(data_matrix, class_labels, num_iter=150):
     m, n = shape(data_matrix)
+    data_matrix =array(data_matrix)
     weights = ones(n)  # initialize to all ones
     for j in range(num_iter):
         data_index = list(range(m))
@@ -149,8 +154,9 @@ def multi_test():
 
 
 if __name__ == "__main__":
-    # data_arr, label_mat = load_data_set()
-    # weights = grad_ascent(data_arr, label_mat)
-    # print(weights)
-    # plot_best_fit(weights)
-    multi_test()
+    data_arr, label_mat = load_data_set()
+    weights = stoc_grad_ascent1(data_arr, label_mat)
+    print(weights)
+    plot_best_fit(weights)
+    # multi_test()
+    # plot_best_fit(None)
