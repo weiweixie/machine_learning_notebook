@@ -21,8 +21,13 @@ Flying_sfeng博客地址：http://blog.csdn.net/flying_sfeng/article/details/641
 from random import seed, randrange, random
 
 
-# 导入csv文件
+
 def loadDataSet(filename):
+    """
+    导入csv文件
+    :param filename:
+    :return:
+    """
     dataset = []
     with open(filename, 'r') as fr:
         for line in fr.readlines():
