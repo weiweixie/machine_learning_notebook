@@ -7,7 +7,7 @@ from numpy import *
 import matplotlib
 import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle
-import logistic_regression.log_regres as logRegres
+import ml.logistic_regression.log_regres as logRegres
 
 def stocGradAscent0(dataMatrix, classLabels):
     m,n = shape(dataMatrix)

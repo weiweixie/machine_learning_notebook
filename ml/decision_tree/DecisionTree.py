@@ -11,7 +11,7 @@ print(__doc__)
 import operator
 from math import log
 
-import decision_tree.decisionTreePlot as dtPlot
+from ml import decision_tree as dtPlot
 
 
 def createDataSet():
